@@ -43,3 +43,12 @@ h1, h2, h3 {
 .flex{
    display: flex; 
 }
+.w25{
+    flex: 0 0 25%;
+}
+.w75{
+    flex: 0 0 75%;
+}
+.gap20{
+    gap: 20px
+}
