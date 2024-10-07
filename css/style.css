@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Définit la police de caractères utilisée pour le texte du corps de la page */
+    background-color: #162a40; /* Définit la couleur d'arrière-plan du corps de la page */
+    color: white; /* Définit la couleur du texte par défaut en blanc */
+}
+
+h1 {
+    font-size: 28px; /* Définit la taille de la police pour les titres de niveau 1 (h1) */
+}
+
+h2 {
+    font-size: 26px; /* Définit la taille de la police pour les titres de niveau 2 (h2) */
+}
+
+h3 {
+    font-size: 24px; /* Définit la taille de la police pour les titres de niveau 3 (h3) */
+}
+
+h1, h2, h3 {
+    color: #afedfe; /* Définit la couleur du texte pour les titres h1, h2 et h3 en bleu clair */
+    font-weight: bold; /* Définit le poids de la police en gras pour les titres h1, h2 et h3 */
+}
