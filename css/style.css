@@ -6,6 +6,7 @@ body {
 
 h1 {
     font-size: 28px; /* Définit la taille de la police pour les titres de niveau 1 (h1) */
+
 }
 
 h2 {
@@ -19,4 +20,11 @@ h3 {
 h1, h2, h3 {
     color: #afedfe; /* Définit la couleur du texte pour les titres h1, h2 et h3 en bleu clair */
     font-weight: bold; /* Définit le poids de la police en gras pour les titres h1, h2 et h3 */
+    line-height: 50px;
 }
+
+.container {
+    width: 1024px; /* Définit la largeur de l'élément .container à 1024 pixels */
+    margin: auto; /* Centre horizontalement l'élément en lui attribuant des marges automatiques de chaque côté */
+}
+
