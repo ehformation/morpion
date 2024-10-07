@@ -62,6 +62,7 @@ div#game-settings {
     left: 0;
     height: 100vh;
     background: rgb(0 0 0 / 31%);
+    display: none; /*Ne pas afficher la popup au debut*/
 }
 .popup{
     position: fixed;
