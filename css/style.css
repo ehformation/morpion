@@ -69,8 +69,8 @@ div#game-settings {
     background: #162a40;
     padding: 20px;
     width: 300px;
-    height: 300px;
-    top: calc(50% - 150px);
+    height: 390px;
+    top: calc(50% - 195px);
     left: calc(50% - 150px);
 }
 input[type="text"], select {
@@ -80,4 +80,31 @@ input[type="text"], select {
 }
 .body-popup > div{
     margin-bottom: 20px;
+}
+
+#game-rules{
+    display: none; /*Ne pas afficher les regles du jeu au debut*/
+}
+
+/*Le plateau*/
+#plateau{
+    width: 410px;
+    height: 410px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+/*Les cases du plateau*/
+#plateau > div{
+    background-color: #afedfe;
+    color: black;
+    /*Chaque case fais 136px ce qui correspond a 400px soit la largeur du plateau divisé par 3 c'est le nombre de cases*/
+    flex: 0 0 136.666px;
+    /*Pour que les croix et ronds s'affiche au centre*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*fin*/
+    font-size: 90px;
+    border: 4px solid #162a40;
 }
