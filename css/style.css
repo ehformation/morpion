@@ -28,3 +28,15 @@ h1, h2, h3 {
     margin: auto; /* Centre horizontalement l'élément en lui attribuant des marges automatiques de chaque côté */
 }
 
+.btn{
+    background-color: transparent;
+    color: white;
+    border: 1px solid #cdcdcd;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+.full{
+    width: 100%;
+}
