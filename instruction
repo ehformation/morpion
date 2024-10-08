@@ -3,3 +3,6 @@ Au click sur #open-game-rules cela affiche la section #game-rules, et ca cache #
 
 Instruction 2
 Au click sur #open-game-home cela affiche la section #game-home, et ca cache #game-rules
+
+Instruction 3
+Au click sur jouer contre l'ordi cela affiche #game-settings et au click sur #close-game-settings ca cache #game-settings
