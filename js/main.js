@@ -2,6 +2,7 @@ let gameRules = document.getElementById('game-rules');
 let gameHome = document.getElementById('game-home');
 let gameSettings = document.getElementById('game-settings');
 let game = document.getElementById('game');
+let plateau = document.getElementById('plateau');
 
 let buttonOpenGameRules = document.getElementById('open-game-rules');
 let buttonOpenGameHome = document.getElementById('open-game-home');
@@ -31,6 +32,24 @@ function closeGameSettings(){
     gameSettings.style.display = 'none';
 }
 
+function createPlateau(){
+    for (let index = 0; index < 9; index++) {
+        /*Création d'une cellule (cell) :
+
+        let cell = document.createElement('div'); : À chaque itération de la boucle, cette ligne crée un nouvel élément <div> dans le DOM (Document Object Model).
+        document.createElement('div') appelle la méthode createElement de l'objet document, qui génère un nouvel élément HTML de type <div>. Cela est utilisé pour représenter une case sur le plateau de jeu du morpion. */
+
+        let cell = document.createElement('div');
+        /*
+        Ajout de la cellule au plateau :
+
+        plateau.appendChild(cell); : Cette ligne ajoute la nouvelle cellule (cell) à un élément parent appelé plateau.
+        plateau doit être une référence à un élément du DOM (par exemple, une <div> qui sert de conteneur pour le plateau de jeu). La méthode appendChild ajoute cell à la fin de la liste des enfants de plateau.
+        Cela signifie que chaque fois qu'une nouvelle cellule est créée, elle est ajoutée au plateau, ce qui construit progressivement la grille du jeu. */
+        plateau.appendChild(cell)
+    }
+}
+
 function startGame(){
     pseudo = document.getElementById('pseudo').value;
     first = document.getElementById('first').value;
@@ -47,6 +66,8 @@ function startGame(){
     
     closeGameSettings();
     openGame();
+
+    createPlateau();
 
 }
 
