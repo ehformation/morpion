@@ -101,6 +101,7 @@ input[type="text"], select {
     /*Chaque case fais 136px ce qui correspond a 400px soit la largeur du plateau divisé par 3 c'est le nombre de cases*/
     flex: 0 0 136.666px;
     /*Pour que les croix et ronds s'affiche au centre*/
+    height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;

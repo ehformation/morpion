@@ -20,3 +20,10 @@ Instruction 5
 
 Instruction 6 
 - Gestion du click sur la cellule : Recuperer l'id de la cellule cliquée et en extraire uniquement le chiffre (exemple: Si l'id est égale à c1 je récupère 1)
+
+Instruction 7
+- Enregistrer les coups de chaque joueur dans un tableau. Ex:  
+    cle | valeur
+    3   |  X
+    4   |  0
+- Afficher la croix ou le rond sur la cellule cliquée 

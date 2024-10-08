@@ -12,6 +12,7 @@ let buttonOk = document.getElementById('ok');
 
 let pseudo, temps, first;
 let currentPlayer = 'X';
+let etatPlateau = ['','','','','','','','',''];
 
 function openGameRules(){
     gameRules.style.display = 'block';
@@ -36,6 +37,12 @@ function cellClick(event){
     let clickedCell = event.target;
     let clickedCellId = clickedCell.id;
     let clickedCellIndex = parseInt(clickedCellId.substring(1));
+    
+    //Met à jour l'état du plateau, qui représente le plateau de jeu. Elle assigne la valeur de currentPlayer (qui peut être 'X' ou 'O') à l'index spécifié par clickedCellIndex, indiquant ainsi que cette case a été occupée par le joueur actuel. Cela modifie le tableau pour refléter le coup effectué et permet au jeu de suivre les mouvements des joueurs et de déterminer les conditions de victoire
+    etatPlateau[clickedCellIndex] = currentPlayer;
+    /* Met à jour le contenu texte de l'élément de la cellule cliquée (clickedCell). Elle remplace le texte actuel de cette cellule par le symbole du joueur actuel, qui peut être 'X' ou 'O', indiquant ainsi le mouvement effectué par le joueur. Cela permet à l'utilisateur de visualiser immédiatement quel symbole a été placé dans la case, rendant l'état du jeu clair et interactif. */
+    clickedCell.textContent = currentPlayer;
+
 }
 
 function createPlateau(){
