@@ -33,16 +33,61 @@ function closeGameSettings(){
     gameSettings.style.display = 'none';
 }
 
+function checkingWinner(){
+    let combinaisonsGagnantes = [
+        [0,1,2],
+        [0,3,6],
+        [6,7,8],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6],
+        [1,4,7],
+        [3,4,5],
+    ];
+
+    console.log("Etat du plateaux (Historique des coups) : ");
+    console.log(etatPlateau);
+
+    for (let combinaison of combinaisonsGagnantes) {
+        let [a, b, c] = combinaison;
+        if(etatPlateau[a] && etatPlateau[a] == etatPlateau[b] &&  etatPlateau[a] == etatPlateau[c]){
+            alert('Le joueur courant a gagné');
+            
+            return;
+        }
+    }
+    if(!etatPlateau.includes("")){
+        alert('Egalité');
+        return;
+    }
+}
+
+function switchPlayer() {
+    if(currentPlayer == 'X'){
+        currentPlayer = 'O';
+    }else{
+        currentPlayer = 'X';
+    }
+}
 function cellClick(event){
     let clickedCell = event.target;
     let clickedCellId = clickedCell.id;
     let clickedCellIndex = parseInt(clickedCellId.substring(1));
-    
-    //Met à jour l'état du plateau, qui représente le plateau de jeu. Elle assigne la valeur de currentPlayer (qui peut être 'X' ou 'O') à l'index spécifié par clickedCellIndex, indiquant ainsi que cette case a été occupée par le joueur actuel. Cela modifie le tableau pour refléter le coup effectué et permet au jeu de suivre les mouvements des joueurs et de déterminer les conditions de victoire
-    etatPlateau[clickedCellIndex] = currentPlayer;
+
+    console.log('Cellule cliqué : ' + clickedCellIndex + ' par ' + currentPlayer);
+
+    /* Si la case cliquée est déjà occupée par un X ou O */
+    if(etatPlateau[clickedCellIndex] != ''){
+        return;
+    }
+
     /* Met à jour le contenu texte de l'élément de la cellule cliquée (clickedCell). Elle remplace le texte actuel de cette cellule par le symbole du joueur actuel, qui peut être 'X' ou 'O', indiquant ainsi le mouvement effectué par le joueur. Cela permet à l'utilisateur de visualiser immédiatement quel symbole a été placé dans la case, rendant l'état du jeu clair et interactif. */
     clickedCell.textContent = currentPlayer;
-
+    //Met à jour l'état du plateau, qui représente le plateau de jeu. Elle assigne la valeur de currentPlayer (qui peut être 'X' ou 'O') à l'index spécifié par clickedCellIndex, indiquant ainsi que cette case a été occupée par le joueur actuel. Cela modifie le tableau pour refléter le coup effectué et permet au jeu de suivre les mouvements des joueurs et de déterminer les conditions de victoire
+    etatPlateau[clickedCellIndex] = currentPlayer;
+    
+    checkingWinner();
+    switchPlayer();
 }
 
 function createPlateau(){
@@ -53,7 +98,7 @@ function createPlateau(){
         document.createElement('div') appelle la méthode createElement de l'objet document, qui génère un nouvel élément HTML de type <div>. Cela est utilisé pour représenter une case sur le plateau de jeu du morpion. */
 
         let cell = document.createElement('div');
-        cell.id = "c" + (index + 1);
+        cell.id = "c" + (index);
         cell.addEventListener('click', cellClick);
         /*
         Ajout de la cellule au plateau :
@@ -81,9 +126,7 @@ function startGame(){
     
     closeGameSettings();
     openGame();
-
     createPlateau();
-
 }
 
 buttonOpenGameRules.addEventListener('click', openGameRules);

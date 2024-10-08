@@ -27,3 +27,7 @@ Instruction 7
     3   |  X
     4   |  0
 - Afficher la croix ou le rond sur la cellule cliquée 
+
+Instruction 8
+- Création de la fonction checkingWinner : Vérifie si un joueur a réussi à aligner ses symboles sur le plateau de jeu. Elle parcourt chacune de ces conditions et vérifie si les cases correspondantes contiennent le même symbole (et ne sont pas vides), ce qui indiquerait qu'un joueur a gagné.
+- La fonction switchPlayer change le joueur actif en alternant entre 'X' et 'O' à chaque appel. Cela permet de gérer le tour des joueurs, garantissant ainsi que chaque joueur puisse jouer à tour de rôle durant la partie.
