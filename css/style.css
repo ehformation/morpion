@@ -108,3 +108,32 @@ input[type="text"], select {
     font-size: 90px;
     border: 4px solid #162a40;
 }
+.justify-center{
+    justify-content: center;
+}
+.pseudo {
+    font-weight: bold;
+    font-size: 25px;
+}
+.time {
+    background: #379f37;
+    padding: 12px;
+    margin-top: 12px;
+    width: fit-content;
+}
+.avatar{
+    background-color: white;
+    border-radius: 50%;
+}
+.avatar img{
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+}
+#game-opponent {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+#game{
+    display: none; /*Ne pas afficher le plateau de jeu au début */
+}
