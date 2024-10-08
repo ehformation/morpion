@@ -1,2 +1,5 @@
 Instruction 1
 Au click sur #open-game-rules cela affiche la section #game-rules, et ca cache #game-home
+
+Instruction 2
+Au click sur #open-game-home cela affiche la section #game-home, et ca cache #game-rules
