@@ -32,6 +32,12 @@ function closeGameSettings(){
     gameSettings.style.display = 'none';
 }
 
+function cellClick(event){
+    let clickedCell = event.target;
+    let clickedCellId = clickedCell.id;
+    let clickedCellIndex = parseInt(clickedCellId.substring(1));
+}
+
 function createPlateau(){
     for (let index = 0; index < 9; index++) {
         /*Création d'une cellule (cell) :
@@ -40,6 +46,8 @@ function createPlateau(){
         document.createElement('div') appelle la méthode createElement de l'objet document, qui génère un nouvel élément HTML de type <div>. Cela est utilisé pour représenter une case sur le plateau de jeu du morpion. */
 
         let cell = document.createElement('div');
+        cell.id = "c" + (index + 1);
+        cell.addEventListener('click', cellClick);
         /*
         Ajout de la cellule au plateau :
 

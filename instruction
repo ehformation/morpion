@@ -1,5 +1,5 @@
 Instruction 1
-Au click sur open-game-rules cela affiche la section game-rules, et ca cache #game-home
+Au click sur open-game-rules cela affiche la section game-rules, et ca cache game-home
 
 Instruction 2
 Au click sur open-game-home cela affiche la section game-home, et ca cache game-rules
@@ -17,3 +17,6 @@ Au click sur Valider sur la popup game-settings :
 
 Instruction 5
 - On crée la grille
+
+Instruction 6 
+- Gestion du click sur la cellule : Recuperer l'id de la cellule cliquée et en extraire uniquement le chiffre (exemple: Si l'id est égale à c1 je récupère 1)
