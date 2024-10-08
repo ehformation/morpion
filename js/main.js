@@ -32,6 +32,10 @@ function openGameSettings(){
 function closeGameSettings(){
     gameSettings.style.display = 'none';
 }
+function closeGame(){
+    game.style.display = 'none';
+}
+
 
 function checkingWinner(){
     let combinaisonsGagnantes = [
@@ -52,14 +56,25 @@ function checkingWinner(){
         let [a, b, c] = combinaison;
         if(etatPlateau[a] && etatPlateau[a] == etatPlateau[b] &&  etatPlateau[a] == etatPlateau[c]){
             alert('Le joueur courant a gagné');
-            
+            endGame();
             return;
         }
     }
     if(!etatPlateau.includes("")){
         alert('Egalité');
+        endGame();
         return;
     }
+}
+
+function resetGame(){
+    etatPlateau = ['','','','','','','','',''];
+}
+
+function endGame(){
+    resetGame();
+    openGameHome();
+    closeGame();
 }
 
 function switchPlayer() {
@@ -91,6 +106,7 @@ function cellClick(event){
 }
 
 function createPlateau(){
+    plateau.innerHTML = ''; //Annuler toutes les div pour la deuxieme 'partie'
     for (let index = 0; index < 9; index++) {
         /*Création d'une cellule (cell) :
 
@@ -98,7 +114,7 @@ function createPlateau(){
         document.createElement('div') appelle la méthode createElement de l'objet document, qui génère un nouvel élément HTML de type <div>. Cela est utilisé pour représenter une case sur le plateau de jeu du morpion. */
 
         let cell = document.createElement('div');
-        cell.id = "c" + (index);
+        cell.id = "c" + ( index);
         cell.addEventListener('click', cellClick);
         /*
         Ajout de la cellule au plateau :
