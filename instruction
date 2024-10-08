@@ -1,8 +1,18 @@
 Instruction 1
-Au click sur #open-game-rules cela affiche la section #game-rules, et ca cache #game-home
+Au click sur open-game-rules cela affiche la section game-rules, et ca cache #game-home
 
 Instruction 2
-Au click sur #open-game-home cela affiche la section #game-home, et ca cache #game-rules
+Au click sur open-game-home cela affiche la section game-home, et ca cache game-rules
 
 Instruction 3
-Au click sur jouer contre l'ordi cela affiche #game-settings et au click sur #close-game-settings ca cache #game-settings
+Au click sur jouer contre l'ordi cela affiche game-settings et au click sur close-game-settings ca cache game-settings
+
+Instruction 4 
+Au click sur Valider sur la popup game-settings : 
+- On récupère les valeurs des champs du formulaire
+- On teste si le pseudo est rempli
+- On initialise le premier joueur
+- On masque la popup et la page d'accueil
+- On affiche le plateau de jeu
+
+
