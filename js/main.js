@@ -41,7 +41,6 @@ function closeGame(){
 }
 
 function startTimer(){
-    console.log(`Temps choisis : ${temps}`);
     tempsRestant = temps;
     
     editTimeForplayers(); //Mettre à jour l'affichage du minuteur pour chaque joueur
@@ -49,7 +48,6 @@ function startTimer(){
     timer = setInterval( () => {
         if(tempsRestant > 0){
             tempsRestant--;
-            console.log(`Temps restant : ${tempsRestant}`);
             editTimeForplayers();
         }else{
             alert("Temps écoulé ! C'est au tour de l'autre joueur.");
@@ -83,9 +81,6 @@ function checkingWinner(){
         [3,4,5],
     ];
 
-    console.log("Etat du plateaux (Historique des coups) : ");
-    console.log(etatPlateau);
-
     for (let combinaison of combinaisonsGagnantes) {
         let [a, b, c] = combinaison;
         if(etatPlateau[a] && etatPlateau[a] == etatPlateau[b] &&  etatPlateau[a] == etatPlateau[c]){
@@ -113,7 +108,6 @@ function endGame(){
 }
 
 function stopTimer(){
-    console.log(`ID timer : ${timer}`);
     clearInterval(timer)
 }
 
@@ -130,8 +124,6 @@ function cellClick(event){
     let clickedCell = event.target;
     let clickedCellId = clickedCell.id;
     let clickedCellIndex = parseInt(clickedCellId.substring(1));
-
-    console.log('Cellule cliqué : ' + clickedCellIndex + ' par ' + currentPlayer);
 
     /* Si la case cliquée est déjà occupée par un X ou O */
     if(etatPlateau[clickedCellIndex] != ''){
