@@ -9,11 +9,17 @@ export default class GameHome extends HTMLElement {
     connectedCallback() {
         this.render();
         const buttonOpenGameRules = this.shadowRoot.getElementById('open-game-rules');
+        const buttonOpenGameSettings = this.shadowRoot.getElementById('open-game-settings');
         buttonOpenGameRules.addEventListener('click', () => { this.openRules() } );
+        buttonOpenGameSettings.addEventListener('click', () => { this.openGameSettings() } );
     }
 
     openRules() {
         this.replaceWith(document.createElement('game-rules'));
+    }
+
+    openGameSettings() {
+        this.replaceWith(document.createElement('game-settings'));
     }
 
     render() {
