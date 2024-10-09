@@ -3,4 +3,4 @@ Exercice
 Créer le composant gameRules 
 Afficher le html du gameRules grace à la methode render
 Créer la méthode backToHome() qui permet de revenir à l'accueil
-
+Supprimer la ligne qui cache #gale-rules dans le css
