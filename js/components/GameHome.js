@@ -8,7 +8,8 @@ export default class GameHome extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.shadowRoot.getElementById('open-game-rules').addEventListener('click', () => this.openRules() );
+        const buttonOpenGameRules = this.shadowRoot.getElementById('open-game-rules');
+        buttonOpenGameRules.addEventListener('click', () => { this.openRules() } );
     }
 
     openRules() {
