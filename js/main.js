@@ -3,6 +3,8 @@ let gameHome = document.getElementById('game-home');
 let gameSettings = document.getElementById('game-settings');
 let game = document.getElementById('game');
 let plateau = document.getElementById('plateau');
+let player1Time = document.getElementById('player-1-time');
+let player2Time = document.getElementById('player-2-time');
 
 let buttonOpenGameRules = document.getElementById('open-game-rules');
 let buttonOpenGameHome = document.getElementById('open-game-home');
@@ -13,6 +15,8 @@ let buttonOk = document.getElementById('ok');
 let pseudo, temps, first;
 let currentPlayer = 'X';
 let etatPlateau = ['','','','','','','','',''];
+let tempsRestant;
+let timer;
 
 function openGameRules(){
     gameRules.style.display = 'block';
@@ -35,6 +39,36 @@ function closeGameSettings(){
 function closeGame(){
     game.style.display = 'none';
 }
+
+function startTimer(){
+    console.log(`Temps choisis : ${temps}`);
+    tempsRestant = temps;
+    
+    editTimeForplayers(); //Mettre à jour l'affichage du minuteur pour chaque joueur
+
+    timer = setInterval( () => {
+        if(tempsRestant > 0){
+            tempsRestant--;
+            console.log(`Temps restant : ${tempsRestant}`);
+            editTimeForplayers();
+        }else{
+            alert("Temps écoulé ! C'est au tour de l'autre joueur.");
+            switchPlayer();
+        }
+    } , 1000);
+
+}
+
+function editTimeForplayers(){
+    if(currentPlayer == 'X'){
+        player1Time.textContent = `00:${tempsRestant}`;
+        player2Time.textContent = `00:00`;
+    }else{
+        player1Time.textContent = `00:00`;
+        player2Time.textContent = `00:${tempsRestant}`;
+    }
+}
+
 
 
 function checkingWinner(){
@@ -72,17 +106,25 @@ function resetGame(){
 }
 
 function endGame(){
+    stopTimer();
     resetGame();
     openGameHome();
     closeGame();
 }
 
+function stopTimer(){
+    console.log(`ID timer : ${timer}`);
+    clearInterval(timer)
+}
+
 function switchPlayer() {
+    stopTimer();
     if(currentPlayer == 'X'){
         currentPlayer = 'O';
     }else{
         currentPlayer = 'X';
     }
+    startTimer();
 }
 function cellClick(event){
     let clickedCell = event.target;
@@ -143,6 +185,7 @@ function startGame(){
     closeGameSettings();
     openGame();
     createPlateau();
+    startTimer();
 }
 
 buttonOpenGameRules.addEventListener('click', openGameRules);
