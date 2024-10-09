@@ -22,6 +22,15 @@ export default class GameSettings extends HTMLElement {
             alert('Le pseudo est obligatoire !');
             return;
         }
+
+        const gameBoard = document.createElement('game-board');
+        gameBoard.setAttribute("pseudo", pseudo);
+        gameBoard.setAttribute("time", time);
+        gameBoard.setAttribute("first-player", firstPlayer);
+
+        //Créer cela : <game-board pseudo="..." time="..." first-player="..." ></game-board>
+
+        this.replaceWith(gameBoard);
     }
 
     closeGameSettings(){
