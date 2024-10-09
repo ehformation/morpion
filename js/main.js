@@ -5,6 +5,7 @@ let game = document.getElementById('game');
 let plateau = document.getElementById('plateau');
 let player1Time = document.getElementById('player-1-time');
 let player2Time = document.getElementById('player-2-time');
+let player1Pseudo = document.getElementById('player-1-pseudo');
 
 let buttonOpenGameRules = document.getElementById('open-game-rules');
 let buttonOpenGameHome = document.getElementById('open-game-home');
@@ -84,7 +85,8 @@ function checkingWinner(){
     for (let combinaison of combinaisonsGagnantes) {
         let [a, b, c] = combinaison;
         if(etatPlateau[a] && etatPlateau[a] == etatPlateau[b] &&  etatPlateau[a] == etatPlateau[c]){
-            alert('Le joueur courant a gagné');
+            let winner = (etatPlateau[a] == 'X') ? pseudo : 'Ordi'
+            alert(`Le joueur ${winner} a gagné`);
             endGame();
             return;
         }
@@ -173,6 +175,8 @@ function startGame(){
     if(first == "ordi"){
         currentPlayer = 'O';
     }
+    
+    player1Pseudo.textContent = pseudo;
     
     closeGameSettings();
     openGame();
