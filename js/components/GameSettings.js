@@ -9,6 +9,19 @@ export default class GameSettings extends HTMLElement {
         this.render();
         const buttonCloseGameSettings = this.shadowRoot.getElementById("close-game-settings");
         buttonCloseGameSettings.addEventListener("click", () => { this.closeGameSettings() });
+        const buttonStartGame = this.shadowRoot.getElementById("ok");
+        buttonStartGame.addEventListener("click", () => { this.startGame() })
+    }
+
+    startGame() {
+        const pseudo = this.shadowRoot.getElementById('pseudo').value;
+        const time = this.shadowRoot.getElementById('temps').value;
+        const firstPlayer = this.shadowRoot.getElementById('first').value;
+
+        if(pseudo.trim() == '' ){
+            alert('Le pseudo est obligatoire !');
+            return;
+        }
     }
 
     closeGameSettings(){
