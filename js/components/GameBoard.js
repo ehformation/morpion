@@ -149,7 +149,7 @@ export default class GameBoard extends HTMLElement {
         //Choisir au hasard un numero de case 
         if(emptyCellNumbers.length > 0 ){
             const randomNumber = emptyCellNumbers[Math.floor(Math.random() * emptyCellNumbers.length)];
-            console.log(randomNumber);
+            
             //Lancer le click sur cette case en utilisant handleCellClick
             setTimeout(() => {
                 this.handleCellClick(randomNumber);
