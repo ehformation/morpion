@@ -24,6 +24,7 @@ export default class GameSettings extends HTMLElement {
         }
 
         const gameBoard = document.createElement('game-board');
+        
         gameBoard.setAttribute("pseudo", pseudo);
         gameBoard.setAttribute("time", time);
         gameBoard.setAttribute("first-player", firstPlayer);
