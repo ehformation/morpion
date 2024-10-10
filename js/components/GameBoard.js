@@ -76,21 +76,26 @@ export default class GameBoard extends HTMLElement {
         
         this.board[index] = this.currentPlayer;
         this.updateCell(index);
-        console.log(this.board);
+
         if(this.checkingWinner()) {
             alert(`Le joueur ${this.players[this.currentPlayer].name} a gagné`);
             this.endGame();
         } else if (!this.board.includes("")){
             alert('Egalité');
             this.endGame();
+        }else{
+            this.switchPlayer();
+            if(this.currentPlayer == 'O'){
+                this.computerPlay();
+            }
         }
-
-        this.switchPlayer();
     }
 
     endGame(){
         this.stopTimer();
-        this.replaceWith(document.createElement('game-home'));
+        setTimeout(() => {
+            this.replaceWith(document.createElement('game-home'));
+        }, 2000);
     }
 
     updateCell(index){
@@ -131,6 +136,28 @@ export default class GameBoard extends HTMLElement {
         return this.currentPlayer === 'X' ? 'O' : 'X';
     }
 
+    computerPlay() {
+       
+        //Savoir quelles numeros de cases sont vides 
+        let emptyCellNumbers = [];
+        for (let [index, cell] of this.board.entries()) {
+            if(cell == ''){
+                emptyCellNumbers.push(index);
+            } 
+        }
+        
+        //Choisir au hasard un numero de case 
+        if(emptyCellNumbers.length > 0 ){
+            const randomNumber = emptyCellNumbers[Math.floor(Math.random() * emptyCellNumbers.length)];
+            console.log(randomNumber);
+            //Lancer le click sur cette case en utilisant handleCellClick
+            setTimeout(() => {
+                this.handleCellClick(randomNumber);
+            }, 1000);
+            
+        }
+    }
+
     render() {
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="css/style.css">
@@ -164,6 +191,9 @@ export default class GameBoard extends HTMLElement {
             <div id="plateau"></div>
         </div>`;
         this.renderBoard();
+        if (this.currentPlayer == 'O') {
+            this.computerPlay();
+        }
     }
 
     renderBoard(){
