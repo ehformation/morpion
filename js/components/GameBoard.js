@@ -43,18 +43,26 @@ export default class GameBoard extends HTMLElement {
         this.currentPlayer = this.firstPlayer == 'joueur' ? 'X' : 'O';
         this.render();
     }
-
+    initTime() {
+        this.players['X'].timeRemaining = this.time
+        this.players['O'].timeRemaining = this.time
+    }
     startTimer(){
+        this.initTime();
         this.editTimeForplayers();
     
         this.timer = setInterval( () => {
             let thePlayer = this.players[this.currentPlayer];
+            /* this.player['O'] */
             if(thePlayer.timeRemaining > 0){
                 thePlayer.timeRemaining--;
                 this.editTimeForplayers();
             }else{
                 alert("Temps écoulé ! C'est au tour de l'autre joueur.");
                 this.switchPlayer();
+                if(this.currentPlayer == 'O'){
+                    this.computerPlay();
+                }
             }
         } , 1000);
     
@@ -66,17 +74,32 @@ export default class GameBoard extends HTMLElement {
 
     editTimeForplayers(){
         this.shadowRoot.getElementById('player-1-time').textContent = `00:${this.players['X'].timeRemaining}`
+        /**
+         * 00:29
+         */
         this.shadowRoot.getElementById('player-2-time').textContent = `00:${this.players['O'].timeRemaining}`
+        /**
+         * 00:29
+         */
     }
 
     handleCellClick(index) {
+        //Si this.board[3] est different de ''
         if(this.board[index] != ''){
             return;
         }
         
         this.board[index] = this.currentPlayer;
-        this.updateCell(index);
+        /* this.board[0] = "X"
+         Cle | Valeur
+         0   |  X
+         3   |  O
 
+        */
+        
+        this.updateCell(index);
+        //this.updateCell(0)
+        
         if(this.checkingWinner()) {
             alert(`Le joueur ${this.players[this.currentPlayer].name} a gagné`);
             this.endGame();
@@ -100,7 +123,12 @@ export default class GameBoard extends HTMLElement {
 
     updateCell(index){
         const cell = this.shadowRoot.querySelector(`game-cell[number="${index}"]`);
+        /* on récupère la cellule sur le html d'en bas (dans la fonction render() ) grace a son attribut number="0" */
         cell.setAttribute("value", this.board[index]);
+        /* A cette cellule ou lui attribut la valeur : this.board[0] 
+           A la fin de cette fonction on aura 
+           <game-cell number="0" value="X"></game-cell>
+        */
     }
 
     checkingWinner(){
@@ -117,8 +145,16 @@ export default class GameBoard extends HTMLElement {
     
         for (let combinaison of winCombinations) {
             let [a, b, c] = combinaison;
+            /*1er Passage de la boucle : on récupère les valeurs a, b, c de la première ligne de  winCombinations donc : 
+            a = 0, b = 1, c = 2 */
             
             if(this.board[a] && this.board[a] == this.board[b] && this.board[a] == this.board[c]){
+                 /*1er Passage de la boucle : on teste si 
+                 this.board[0] existe et si this.board[0] est égale à this.board[1] et si this.board[0] est égale à this.board[2] 
+                 this.board[0] = "X"
+                 this.board[1] = ""
+                 */
+            
                 return true; //Une combinaison gagnante a ete trouvé
             }
         }
@@ -129,10 +165,12 @@ export default class GameBoard extends HTMLElement {
     switchPlayer() {
         this.stopTimer();
         this.currentPlayer = this.getOtherPlayer();
+        //this.currentPlayer = O;
         this.startTimer();
     }
 
     getOtherPlayer(){
+        //"X" === "X" => "O"
         return this.currentPlayer === 'X' ? 'O' : 'X';
     }
 
@@ -141,6 +179,7 @@ export default class GameBoard extends HTMLElement {
         //Savoir quelles numeros de cases sont vides 
         let emptyCellNumbers = [];
         for (let [index, cell] of this.board.entries()) {
+            
             if(cell == ''){
                 emptyCellNumbers.push(index);
             } 
@@ -149,10 +188,12 @@ export default class GameBoard extends HTMLElement {
         //Choisir au hasard un numero de case 
         if(emptyCellNumbers.length > 0 ){
             const randomNumber = emptyCellNumbers[Math.floor(Math.random() * emptyCellNumbers.length)];
+            //3 est choisis au hasard dans les case qui reste de this.board
             
             //Lancer le click sur cette case en utilisant handleCellClick
             setTimeout(() => {
                 this.handleCellClick(randomNumber);
+                //this.handleCellClick(3)
             }, 1000);
             
         }

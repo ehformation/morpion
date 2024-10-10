@@ -24,16 +24,18 @@ export default class GameCell extends HTMLElement {
         if(name == "number")
             this.number = parseInt(newValue);
         if(name == "value")
+            /*Suite à updateCell de GameBoard ou on a changé la valeur de l'attribut value on met à jour la valeur this.value */
             this.value = newValue;
 
+        /* On rappelle render() pour que visuellemnt la X s'affiche */   
         this.render();
     }
 
     handleClick(){
-
         const gameBoard = this.parentBoard;
         if(gameBoard){
             gameBoard.handleCellClick(this.number)
+            //gameBoard.hadleCellClick(0)
         }
     }
 
